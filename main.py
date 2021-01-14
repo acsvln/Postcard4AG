@@ -7,7 +7,7 @@ from asciimatics.particles import RingFirework, SerpentFirework, StarFirework,\
     PalmFirework
 from asciimatics.renderers import FigletText, Box, StaticRenderer
 from asciimatics.scene import Scene
-from asciimatics.screen import ManagedScreen
+from asciimatics.screen import ManagedScreen, Screen
 from asciimatics.paths import Path
 from art import art, decor
 from ascii_train import train
@@ -56,7 +56,8 @@ def scene_start(screen, duration):
           screen,
           StaticRenderer([smile]),
           y=center.y - 2 - teddy_y_offset,
-          x=center.x - len(smile) // 2
+          x=center.x - len(smile) // 2,
+          colour=Screen.COLOUR_MAGENTA
         ),
         Print(
           screen,
@@ -69,7 +70,8 @@ def scene_start(screen, duration):
           screen,
           StaticRenderer([teddy]),
           y=center.y + 1 - teddy_y_offset,
-          x=center.x - teddy_width // 2
+          x=center.x - teddy_width // 2,
+          colour=Screen.COLOUR_YELLOW
         ),
         Snow(screen)
     ]
@@ -93,7 +95,8 @@ def scene_train(screen, duration):
           )
       },
       path=path,
-      clear=True
+      clear=True,
+      colour=Screen.COLOUR_CYAN
     )
 
     return Scene([sprite], duration)
@@ -130,13 +133,15 @@ def scene_girl_walk(screen, duration):
         StaticRenderer([house]),
         y=offset.y,
         x=offset.x,
-        transparent=True
+        transparent=True,
+        colour=Screen.COLOUR_BLUE
       ),
       Print(
         screen,
         StaticRenderer([postbox]),
         y=house_height + offset.y,
         x=house_width + 3 + offset.x,
+        colour=Screen.COLOUR_YELLOW
       ),
       sprite
     ]
@@ -193,49 +198,57 @@ def scene_postcard(screen, duration):
         screen,
         StaticRenderer(["From"]),
         y=offset_y + line_offsets[0],
-        x=offset_x + field_label_x_offset
+        x=offset_x + field_label_x_offset,
+        colour=Screen.COLOUR_MAGENTA
       ),
       Print(
         screen,
         StaticRenderer([sender_text]),
         y=offset_y + line_offsets[0],
-        x=offset_x + field_value_x_offset
+        x=offset_x + field_value_x_offset,
+        colour=Screen.COLOUR_CYAN
       ),
       Print(
         screen,
         StaticRenderer(["To"]),
         y=offset_y + line_offsets[1],
-        x=offset_x + field_label_x_offset
+        x=offset_x + field_label_x_offset,
+        colour=Screen.COLOUR_MAGENTA
       ),
       Print(
         screen,
         StaticRenderer([recipient_text]),
         y=offset_y + line_offsets[1],
-        x=offset_x + field_value_x_offset
+        x=offset_x + field_value_x_offset,
+        colour=Screen.COLOUR_CYAN
       ),
       Print(
         screen,
         StaticRenderer(["Topic"]),
         y=offset_y + line_offsets[2],
-        x=offset_x + field_label_x_offset
+        x=offset_x + field_label_x_offset,
+        colour=Screen.COLOUR_MAGENTA
       ),
       Print(
         screen,
         StaticRenderer([topic_text]),
         y=offset_y + line_offsets[2],
-        x=offset_x + field_value_x_offset
+        x=offset_x + field_value_x_offset,
+        colour=Screen.COLOUR_CYAN
       ),
       Print(
         screen,
         StaticRenderer(["Message"]),
         y=offset_y + line_offsets[3],
-        x=offset_x + field_label_x_offset
+        x=offset_x + field_label_x_offset,
+        colour=Screen.COLOUR_MAGENTA
       ),
       Print(
         screen,
         FigletText(message_text, font=u'big'),
         y=offset_y + text_y,
-        x=offset_x + text_x
+        x=offset_x + text_x,
+        colour=Screen.COLOUR_CYAN
       )
     ]
     return Scene(effects, duration)
@@ -251,7 +264,8 @@ def scene_end(screen, duration):
         screen,
         FigletText("The End", font=u'doh', width=text_width),
         y=center.y,
-        x=center.x - text_width // 2
+        x=center.x - text_width // 2,
+        colour=Screen.COLOUR_RED
       )
     ]
 
