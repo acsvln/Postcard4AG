@@ -39,10 +39,10 @@ def getGirlSceneOffsets(screen):
 def scene_start(screen, duration):
     show_text = "Start The Show"
     snow_text = "Start The Snow"
-    decoration = decor("snow", both=True)
+    decoration = decor("fancy52", both=True)
     start_caption = decoration[0] + show_text + decoration[1]
     snow_caption = decoration[0] + snow_text + decoration[1]
-    smile = art("cat smile")
+    smile = art("cat1")
 
     center = centerOfScreen(screen)
 
